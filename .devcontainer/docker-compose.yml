@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app:
+    container_name: 'app'
+    build: .
+    volumes:
+      - ../:/opt/app/src
+    tty: true
+  mysql:
+    image: "mysql:8"
+    environment:
+      MYSQL_DATABASE: "testdb"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+    ports:
+      - 3306:3306
+    volumes:
+      - "../mysql:/var/lib/mysql"
+    tty: true
